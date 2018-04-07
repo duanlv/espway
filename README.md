@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/duanlv/espway.svg?branch=master)](https://travis-ci.org/duanlv/espway)
+
 # ESPway
 A segway-like balancing two-wheel robot built on ESP8266. It is controlled over WiFi via a HTML/JS GUI and a WebSocket. This is a work in progress. The firmware is meant to run on a WEMOS D1 mini or a similar board.
 
