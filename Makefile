@@ -6,7 +6,7 @@ BUILD_DIR = ./build/
 FIRMWARE_DIR = ./firmware/
 
 ESPBAUD ?= 230400
-FLASH_SIZE ?= 4MB
+FLASH_SIZE ?= 4m
 FLASH_MODE ?= qio
 FLASH_FREQ ?= 80m
 PRINTF_SCANF_FLOAT_SUPPORT ?= 0
@@ -31,21 +31,23 @@ ESPTOOL_ARGS = --flash_freq $(FLASH_FREQ) --flash_mode $(FLASH_MODE) --flash_siz
 HTTPD_DIR = $(LWIP_DIR)apps/http/
 FSDATA = $(SRC_DIR)/fsdata_custom.c
 
-all: $(FSDATA)
+#all: $(FSDATA)
+all:
 
-$(FSDATA): $(HTTPD_DIR)makefsdata/makefsdata.c $(HTTPD_DIR)makefsdata/tinydir.h frontend/src/* 
-	cd frontend; npm run build
-	tcc -w -I$(lwip_ROOT)include -I$(LWIP_DIR)include -Iesp-open-rtos/core/include \
-		-run $< frontend/output -f:$@
+#$(FSDATA): $(HTTPD_DIR)makefsdata/makefsdata.c $(HTTPD_DIR)makefsdata/tinydir.h frontend/src/* 
+	#cd frontend; npm run build
+	#tcc -w -I$(lwip_ROOT)include -I$(LWIP_DIR)include -Iesp-open-rtos/core/include \
+		#-run $< frontend/output -f:$@
 
-clean: clean-fsdata
+#clean: clean-fsdata
+clean:
 
 clean-fsdata:
 	$(Q) rm -f $(FSDATA)
 
+#$(MAKE) $(FSDATA)
 parallel:
 	$(MAKE) clean
-	$(MAKE) $(FSDATA)
 	$(MAKE) -j$(N_PROCESSES) all
 
 flash-only:

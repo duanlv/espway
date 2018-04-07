@@ -45,6 +45,6 @@ script:
   # Remove ssid_config requirement for examples
   #- echo -e '#define WIFI_SSID "mywifissid"\n#define WIFI_PASS "my secret password"\n' > include/private_ssid_config.h
   # Don't verbose-build all examples (too much output), only verbose-build errors
-  - make
+  - make parallel
   # build bootloader
   #- make -C bootloader/
